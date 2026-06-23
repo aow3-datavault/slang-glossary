@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art of War 3 — Gaming Slang Glossary</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d28;
+    --surface-alt: #222639;
+    --border: #2a2f45;
+    --text: #e4e6f0;
+    --text-dim: #8b8fa8;
+    --accent: #6c8cff;
+    --accent-glow: rgba(108,140,255,0.15);
+    --green: #4ade80;
+    --gold: #fbbf24;
+    --red: #f87171;
+    --radius: 12px;
+  }
+
+  html { font-size: 17px; scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    text-align: center;
+    padding: 64px 0 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  header .icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+  header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  header .subtitle {
+    margin-top: 12px;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  header .subtitle a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  header .subtitle a:hover { text-decoration: underline; }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 0 48px;
+  }
+
+  section { margin-bottom: 40px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-header .emoji { font-size: 1.3rem; }
+  .section-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .section-header .count {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: var(--surface-alt);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .entry {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .entry:hover { background: var(--surface-alt); }
+
+  .entry .term {
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .entry .sep { color: var(--text-dim); font-weight: 300; }
+  .entry .def { color: var(--text); }
+
+  .entry .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .badge-green { background: rgba(74,222,128,0.15); color: var(--green); }
+  .badge-gold { background: rgba(251,191,36,0.15); color: var(--gold); }
+  .badge-red { background: rgba(248,113,113,0.15); color: var(--red); }
+  .badge-blue { background: var(--accent-glow); color: var(--accent); }
+
+  footer {
+    text-align: center;
+    padding: 48px 0 64px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  .toc-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .toc-list { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .toc-list li { font-size: 0.85rem; }
+  .toc-list a {
+    color: var(--accent);
+    text-decoration: none;
+    padding: 2px 0;
+  }
+  .toc-list a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    html { font-size: 15px; }
+    header h1 { font-size: 1.6rem; }
+    header { padding: 40px 0 32px; }
+    .entry { flex-wrap: wrap; gap: 2px 8px; padding: 5px 8px; }
+    .entry .term { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <span class="icon">📖</span>
+  <h1>Art of War 3 Gaming Slang</h1>
+  <p class="subtitle">
+    The definitive glossary of terms, abbreviations and player slang<br>
+    curated by <a href="https://aow3-datavault.github.io/slang-glossary">AOW3 DataVault</a>
+  </p>
+</header>
+
+<div class="divider"></div>
+
+<nav class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ul class="toc-list">
+    <li><a href="#general">🎮 General</a></li>
+    <li><a href="#units">🏃 Units</a></li>
+    <li><a href="#tiers">🗺 Tiers</a></li>
+    <li><a href="#heroes">🦁 Heroes</a></li>
+    <li><a href="#buildings">🏭 Buildings</a></li>
+    <li><a href="#combos">🤝 Combos</a></li>
+    <li><a href="#air">✈️ Air Strikes</a></li>
+    <li><a href="#players">👥 Players</a></li>
+    <li><a href="#battle">💳 Battle</a></li>
+    <li><a href="#params">📊 Parameters</a></li>
+    <li><a href="#modes">🎮 Modes</a></li>
+    <li><a href="#economy">💰 Economy</a></li>
+    <li><a href="#balance">⚙️ Balance</a></li>
+    <li><a href="#status">🚫 Status</a></li>
+    <li><a href="#kb">📋 Knowledge Base</a></li>
+  </ul>
+</nav>
+
+<section id="general">
+  <div class="section-header">
+    <span class="emoji">🎮</span>
+    <h2>General Terms</h2>
+    <span class="count">15</span>
+  </div>
+  <div class="entry"><span class="term">Aow</span><span class="sep">—</span><span class="def">The game Art of War</span></div>
+  <div class="entry"><span class="term">Dev</span><span class="sep">—</span><span class="def">Game developer</span></div>
+  <div class="entry"><span class="term">Confa</span><span class="sep">—</span><span class="def">Confederation</span></div>
+  <div class="entry"><span class="term">Sopra</span><span class="sep">—</span><span class="def">Resistance</span></div>
+  <div class="entry"><span class="term">Rush</span><span class="sep">—</span><span class="def">Fast attack at the very start of the game</span></div>
+  <div class="entry"><span class="term">Spam</span><span class="sep">—</span><span class="def">Continuous mass production of troops</span></div>
+  <div class="entry"><span class="term">Meat</span><span class="sep">—</span><span class="def">Using huge numbers of Tier 1 units as cannon fodder</span></div>
+  <div class="entry"><span class="term">Farm</span><span class="sep">—</span><span class="def">Base development through strong defense, transitioning to Tier 3 Air Force or Super Weapons</span></div>
+  <div class="entry"><span class="term">Def-attack / Building Rush</span><span class="sep">—</span><span class="def">Building defensive structures right at the enemy's base early in the fight</span></div>
+  <div class="entry"><span class="term">Acct</span><span class="sep">—</span><span class="def">Game account</span></div>
+  <div class="entry"><span class="term">Nickname</span><span class="sep">—</span><span class="def">Profile name</span></div>
+  <div class="entry"><span class="term">Winrate</span><span class="sep">—</span><span class="def">Win percentage</span></div>
+</section>
+
+<section id="units">
+  <div class="section-header">
+    <span class="emoji">🏃</span>
+    <h2>Units</h2>
+    <span class="count">8</span>
+  </div>
+  <div class="entry"><span class="term">Heavy</span><span class="sep">—</span><span class="def">Heavy Assault</span></div>
+  <div class="entry"><span class="term">Dillo</span><span class="sep">—</span><span class="def">Armadillo</span></div>
+  <div class="entry"><span class="term">Jag</span><span class="sep">—</span><span class="def">Jaguar</span></div>
+  <div class="entry"><span class="term">Porc</span><span class="sep">—</span><span class="def">Porcupine</span></div>
+  <div class="entry"><span class="term">Cham</span><span class="sep">—</span><span class="def">Chameleon</span></div>
+  <div class="entry"><span class="term">Gator</span><span class="sep">—</span><span class="def">Alligator</span></div>
+  <div class="entry"><span class="term">Cuda</span><span class="sep">—</span><span class="def">Barracuda</span></div>
+  <div class="entry"><span class="term">Dfly</span><span class="sep">—</span><span class="def">Dragonfly</span></div>
+</section>
+
+<section id="tiers">
+  <div class="section-header">
+    <span class="emoji">🗺</span>
+    <h2>Unit Tiers</h2>
+    <span class="count">3</span>
+  </div>
+  <div class="entry"><span class="term">T1</span><span class="sep">—</span><span class="def">Tier 1 unit</span></div>
+  <div class="entry"><span class="term">T2</span><span class="sep">—</span><span class="def">Tier 2 unit</span></div>
+  <div class="entry"><span class="term">T3</span><span class="sep">—</span><span class="def">Tier 3 unit</span></div>
+</section>
+
+<section id="heroes">
+  <div class="section-header">
+    <span class="emoji">🦁</span>
+    <h2>Heroes</h2>
+    <span class="count">5</span>
+  </div>
+  <div class="entry"><span class="term">Wolv</span><span class="sep">—</span><span class="def">Wolverine</span></div>
+  <div class="entry"><span class="term">Levi</span><span class="sep">—</span><span class="def">Leviathan</span></div>
+  <div class="entry"><span class="term">Sera</span><span class="sep">—</span><span class="def">Seraphim</span></div>
+  <div class="entry"><span class="term">Salad</span><span class="sep">—</span><span class="def">Salamander</span></div>
+  <div class="entry"><span class="term">Sola</span><span class="sep">—</span><span class="def">Solaris</span></div>
+</section>
+
+<section id="buildings">
+  <div class="section-header">
+    <span class="emoji">🏭</span>
+    <h2>Buildings</h2>
+    <span class="count">8</span>
+  </div>
+  <div class="entry"><span class="term">CY / Yard</span><span class="sep">—</span><span class="def">Construction Yard</span></div>
+  <div class="entry"><span class="term">PP / Power</span><span class="sep">—</span><span class="def">Power Plant</span></div>
+  <div class="entry"><span class="term">SC / Supply</span><span class="sep">—</span><span class="def">Supply Center</span></div>
+  <div class="entry"><span class="term">AVF</span><span class="sep">—</span><span class="def">Assault Vehicle Factory</span></div>
+  <div class="entry"><span class="term">SVF</span><span class="sep">—</span><span class="def">Special Vehicle Factory</span></div>
+  <div class="entry"><span class="term">Hero Factory / Object X</span><span class="sep">—</span><span class="def">Prototype Factory</span></div>
+  <div class="entry"><span class="term">Space</span><span class="sep">—</span><span class="def">Space System</span></div>
+  <div class="entry"><span class="term">Nuke</span><span class="sep">—</span><span class="def">Nuclear Missile</span></div>
+</section>
+
+<section id="combos">
+  <div class="section-header">
+    <span class="emoji">🤝</span>
+    <h2>Popular Unit Combos</h2>
+    <span class="count">4</span>
+  </div>
+  <div class="entry"><span class="term">Assault-Hammer</span><span class="sep">—</span><span class="def">Assault + Hammer</span></div>
+  <div class="entry"><span class="term">Fortress-Heavy</span><span class="sep">—</span><span class="def">Heavy Assault + Fortress</span></div>
+  <div class="entry"><span class="term">JCP</span><span class="sep">—</span><span class="def">Jaguar + Chameleon + Porcupine</span></div>
+  <div class="entry"><span class="term">ZTS</span><span class="sep">—</span><span class="def">Zeus + Torrent / Typhoon + Shield</span></div>
+</section>
+
+<section id="air">
+  <div class="section-header">
+    <span class="emoji">✈️</span>
+    <h2>Mass Air Strikes</h2>
+    <span class="count">2</span>
+  </div>
+  <div class="entry"><span class="term">Mass-Cyclone</span><span class="sep">—</span><span class="def">Attack with many Cyclones</span></div>
+  <div class="entry"><span class="term">Mass-Dfly</span><span class="sep">—</span><span class="def">Attack with many Dragonflies</span></div>
+</section>
+
+<section id="players">
+  <div class="section-header">
+    <span class="emoji">👥</span>
+    <h2>Player Classification</h2>
+    <span class="count">7</span>
+  </div>
+  <div class="entry"><span class="term">P2W</span><span class="sep">—</span><span class="def">Player with heavily upgraded unit stats or who spends real money to fast-track upgrades</span></div>
+  <div class="entry"><span class="term">F2P</span><span class="sep">—</span><span class="def">Player with low unit research levels</span></div>
+  <div class="entry"><span class="term">Skill</span><span class="sep">—</span><span class="def">Experienced, skilled player with great game sense</span></div>
+  <div class="entry"><span class="term">Spammer</span><span class="sep">—</span><span class="def">Player who spams the same unit types over and over</span></div>
+  <div class="entry"><span class="term">Solo</span><span class="sep">—</span><span class="def">Player who carries a 1vX match alone</span></div>
+  <div class="entry"><span class="term">Medalist</span><span class="sep">—</span><span class="def">Player who regularly places in tournaments</span></div>
+  <div class="entry"><span class="term">Youtuber</span><span class="sep">—</span><span class="def">Player who records matches and posts them online</span></div>
+</section>
+
+<section id="battle">
+  <div class="section-header">
+    <span class="emoji">💳</span>
+    <h2>Battle Mechanics</h2>
+    <span class="count">11</span>
+  </div>
+  <div class="entry"><span class="term">Boost</span><span class="sep">—</span><span class="def">Card granting temporary battle advantages</span></div>
+  <div class="entry"><span class="term">(to) Gold</span><span class="sep">—</span><span class="def">Actively using Gold boosts during battle</span></div>
+  <div class="entry"><span class="term">Counter</span><span class="sep">—</span><span class="def">Creating favorable matchups against specific enemy units</span></div>
+  <div class="entry"><span class="term">Full CP</span><span class="sep">—</span><span class="def">Recruiting the maximum troop capacity allowed by your current HQ level</span></div>
+  <div class="entry"><span class="term">Smoke</span><span class="sep">—</span><span class="def">Chameleon's smoke screen</span></div>
+  <div class="entry"><span class="term">Flask</span><span class="sep">—</span><span class="def">Wasp's active ability "Acid Burst"</span></div>
+  <div class="entry"><span class="term">Tap / Click</span><span class="sep">—</span><span class="def">Screen tap</span></div>
+  <div class="entry"><span class="term">Kite</span><span class="sep">—</span><span class="def">Maneuvering to trick opponents or dodge critical hits</span></div>
+  <div class="entry"><span class="term">Reset</span><span class="sep">—</span><span class="def">To delete / remove</span></div>
+  <div class="entry"><span class="term">One-shot</span><span class="sep">—</span><span class="def">To kill a unit in a single shot</span></div>
+  <div class="entry"><span class="term">Imba</span><span class="sep">—</span><span class="def">Overpowered (OP) unit that dominates the battlefield</span></div>
+</section>
+
+<section id="params">
+  <div class="section-header">
+    <span class="emoji">📊</span>
+    <h2>Game Parameters &amp; Points</h2>
+    <span class="count">4</span>
+  </div>
+  <div class="entry"><span class="term">HP</span><span class="sep">—</span><span class="def">Health points</span></div>
+  <div class="entry"><span class="term">WP</span><span class="sep">—</span><span class="def">War points</span></div>
+  <div class="entry"><span class="term">TP</span><span class="sep">—</span><span class="def">Tournament points</span></div>
+  <div class="entry"><span class="term">CP</span><span class="sep">—</span><span class="def">Command points</span></div>
+</section>
+
+<section id="modes">
+  <div class="section-header">
+    <span class="emoji">🎮</span>
+    <h2>Game Modes &amp; Battle Formats</h2>
+    <span class="count">5</span>
+  </div>
+  <div class="entry"><span class="term">GG</span><span class="sep">—</span><span class="def">Good Game</span></div>
+  <div class="entry"><span class="term">PvP</span><span class="sep">—</span><span class="def">Battle against a real player</span></div>
+  <div class="entry"><span class="term">PvE (Skirmish)</span><span class="sep">—</span><span class="def">Battle against AI</span></div>
+  <div class="entry"><span class="term">FFA</span><span class="sep">—</span><span class="def">Free-for-All mode</span></div>
+  <div class="entry"><span class="term">FFA3 / FFA4</span><span class="sep">—</span><span class="def">Free-for-All with 3 or 4 players</span></div>
+</section>
+
+<section id="economy">
+  <div class="section-header">
+    <span class="emoji">💰</span>
+    <h2>Economy &amp; Resources</h2>
+    <span class="count">6</span>
+  </div>
+  <div class="entry"><span class="term">Greens</span><span class="sep">—</span><span class="def">Credits (standard in-game currency)</span></div>
+  <div class="entry"><span class="term">Gold</span><span class="sep">—</span><span class="def">Golden credits (premium currency)</span></div>
+  <div class="entry"><span class="term">P2W</span><span class="sep">—</span><span class="def">Spending real money on the game</span></div>
+  <div class="entry"><span class="term">Stock</span><span class="sep">—</span><span class="def">Unit stats are not upgraded</span></div>
+  <div class="entry"><span class="term">Up to rank</span><span class="sep">—</span><span class="def">Unit stats are fully upgraded for its rank</span></div>
+</section>
+
+<section id="balance">
+  <div class="section-header">
+    <span class="emoji">⚙️</span>
+    <h2>Balance &amp; Technical</h2>
+    <span class="count">6</span>
+  </div>
+  <div class="entry"><span class="term">Buff</span><span class="sep">—</span><span class="def">Developer-buffed unit stats</span></div>
+  <div class="entry"><span class="term">Nerf</span><span class="sep">—</span><span class="def">Developer-nerfed unit stats</span></div>
+  <div class="entry"><span class="term">Patch</span><span class="sep">—</span><span class="def">Game update</span></div>
+  <div class="entry"><span class="term">Bug</span><span class="sep">—</span><span class="def">Game glitch or error</span></div>
+  <div class="entry"><span class="term">Lag</span><span class="sep">—</span><span class="def">Game latency</span></div>
+  <div class="entry"><span class="term">Ping</span><span class="sep">—</span><span class="def">Server response time</span></div>
+</section>
+
+<section id="status">
+  <div class="section-header">
+    <span class="emoji">🚫</span>
+    <h2>Player Status &amp; Penalties</h2>
+    <span class="count">3</span>
+  </div>
+  <div class="entry"><span class="term">AFK</span><span class="sep">—</span><span class="def">Temporarily inactive during a match</span></div>
+  <div class="entry"><span class="term">Ban</span><span class="sep">—</span><span class="def">Time-limited punishment</span></div>
+  <div class="entry"><span class="term">Permaban</span><span class="sep">—</span><span class="def">Permanent ban (no expiration)</span></div>
+</section>
+
+<section id="kb">
+  <div class="section-header">
+    <span class="emoji">📋</span>
+    <h2>Knowledge Base</h2>
+    <span class="count">2</span>
+  </div>
+  <div class="entry"><span class="term">Guide</span><span class="sep">—</span><span class="def">Game guide / tutorial</span></div>
+  <div class="entry"><span class="term">Screen</span><span class="sep">—</span><span class="def">Screenshot</span></div>
+</section>
+
+<footer>
+  <p><a href="https://github.com/aow3-datavault">aow3-datavault</a> &middot; Art of War 3 Community Project</p>
+</footer>
+
+</div>
+</body>
+</html>
